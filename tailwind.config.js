@@ -11,6 +11,7 @@ export default {
     },
     fontFamily: {
       italianno: ['Italianno', 'cursive'],
+      lato: ['Lato', 'sans-serif'],
     },
   },
 },

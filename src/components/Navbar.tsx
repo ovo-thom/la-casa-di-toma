@@ -1,7 +1,7 @@
 export default function Navbar() {
   return (
     <nav className="w-full border-b text-gray-50 border-b-gray-400 flex flex-col items-center py-4 bg-transparent select-none">
-      <h1 className="font-italianno text-5xl text-gray-100 drop-shadow-lg transform -rotate-2 tracking-wide">
+      <h1 className="font-italianno text-5xl text-[#9a3737] drop-shadow-lg transform -rotate-2 tracking-wide">
         La Casa Di Toma
       </h1>
       <ul className="flex flex-row gap-8 mt-2 mb-1">
