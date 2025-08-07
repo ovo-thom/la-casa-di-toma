@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div className=" w-full my-10">
-      <div className="relative w-full h-full">
+      <div className="relative w-full">
         <div className="absolute inset-0 bg-black/50 rounded-xl">
         <div className="flex flex-col justify-center items-center h-full">
         <h2 className="font-italianno text-6xl text-gray-200 font-semibold">La dolce vita commence ici</h2>
