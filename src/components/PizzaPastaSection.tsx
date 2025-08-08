@@ -32,7 +32,9 @@ export default function PizzaPastaSection() {
                     alt="Pizza Margherita"
                     className="h-24 w-24 object-cover rounded-full mb-2"
                   />
-                  <p className="text-[#2d2d2d] text-sm mb-1 text-center">{pizza.desc}</p>
+                  <p className="text-[#2d2d2d] text-sm mb-1 text-center">
+                    {pizza.desc}
+                  </p>
                   <p className="text-[#9a3737] font-bold">{pizza.price} €</p>
                 </div>
               ))}
@@ -57,7 +59,9 @@ export default function PizzaPastaSection() {
                     alt="Tagliatelle al pesto"
                     className="h-24 w-24 object-cover rounded-full mb-2"
                   />
-                  <p className="text-[#2d2d2d] text-sm mb-1 text-center">{pasta.desc}</p>
+                  <p className="text-[#2d2d2d] text-sm mb-1 text-center">
+                    {pasta.desc}
+                  </p>
                   <p className="text-[#9a3737] font-bold">{pasta.price} €</p>
                 </div>
               ))}
