@@ -28,7 +28,7 @@ export default function PizzaPastaSection() {
                     {pizza.name}
                   </h4>
                   <img
-                    src="/assets/restaurant.jpg"
+                    src={pizza.img}
                     alt="Pizza Margherita"
                     className="h-24 w-24 object-cover rounded-full mb-2"
                   />
@@ -53,7 +53,7 @@ export default function PizzaPastaSection() {
                     {pasta.name}
                   </h4>
                   <img
-                    src="/assets/restaurant.jpg"
+                    src={pasta.img}
                     alt="Tagliatelle al pesto"
                     className="h-24 w-24 object-cover rounded-full mb-2"
                   />
