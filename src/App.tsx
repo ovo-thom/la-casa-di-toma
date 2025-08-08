@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero"
 import AboutSection from "./components/AboutSection";
 import PizzaPastaSection from "./components/PizzaPastaSection";
+import FeaturedDish from "./components/FeaturedDish";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         </div>
         <AboutSection />
         <PizzaPastaSection />
+        <FeaturedDish />
       </div>
     </>
   );
