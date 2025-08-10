@@ -11,8 +11,8 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <div className="h-screen bg-[#81B29A] text-white">
-        <div className="w-full h-screen max-w-6xl mx-auto">
+      <div className="h-screen text-white">
+        <div className="w-full max-w-6xl mx-auto">
           <Navbar />
           <Hero />
         </div>
