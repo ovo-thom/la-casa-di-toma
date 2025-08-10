@@ -1,7 +1,9 @@
 import { pizzas, pastas } from "../lib/menuDatas";
 import type { MenuItem } from "../lib/menuDatas";
+import { useCart } from "../context/CartContext";
 
 export default function PizzaPastaSection() {
+  const { addItem } = useCart();
   return (
     <section className="min-h-screen w-full py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
@@ -22,7 +24,7 @@ export default function PizzaPastaSection() {
               {pizzas.map((pizza: MenuItem, index: number) => (
                 <div
                   key={index}
-                  className="border bg-white border-sauge rounded-lg p-4 flex flex-col items-center shadow-lg shadow-sauge transition-transform duration-200 hover:-translate-y-1 hover:shadow-2xl hover:border-[#9a3737] min-h-[270px] justify-between"
+                  className="border bg-white border-sauge rounded-lg p-4 flex flex-col items-center shadow-lg shadow-sauge transition-transform duration-200 hover:-translate-y-1 hover:shadow-2xl hover:border-[#9a3737] min-h-[320px] justify-between"
                 >
                   <h4 className="text-black text-lg font-semibold mb-2">
                     {pizza.name}
@@ -35,7 +37,18 @@ export default function PizzaPastaSection() {
                   <p className="text-[#2d2d2d] text-sm mb-1 text-center">
                     {pizza.desc}
                   </p>
-                  <p className="text-[#9a3737] font-bold">{pizza.price} €</p>
+                  <div className="flex flex-col items-center gap-2 w-full">
+                    <p className="text-[#9a3737] font-bold">{pizza.price} €</p>
+                    <button 
+                      onClick={() => addItem(pizza, 'pizza')}
+                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 w-full justify-center"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                      Ajouter au panier
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -49,7 +62,7 @@ export default function PizzaPastaSection() {
               {pastas.map((pasta: MenuItem, index: number) => (
                 <div
                   key={index}
-                  className="border bg-white border-sauge rounded-lg p-4 flex flex-col items-center shadow-lg shadow-sauge transition-transform duration-200 hover:-translate-y-1 hover:shadow-2xl hover:border-[#9a3737] min-h-[270px] justify-between"
+                  className="border bg-white border-sauge rounded-lg p-4 flex flex-col items-center shadow-lg shadow-sauge transition-transform duration-200 hover:-translate-y-1 hover:shadow-2xl hover:border-[#9a3737] min-h-[320px] justify-between"
                 >
                   <h4 className="text-black text-lg font-semibold mb-2">
                     {pasta.name}
@@ -62,7 +75,18 @@ export default function PizzaPastaSection() {
                   <p className="text-[#2d2d2d] text-sm mb-1 text-center">
                     {pasta.desc}
                   </p>
-                  <p className="text-[#9a3737] font-bold">{pasta.price} €</p>
+                  <div className="flex flex-col items-center gap-2 w-full">
+                    <p className="text-[#9a3737] font-bold">{pasta.price} €</p>
+                    <button 
+                      onClick={() => addItem(pasta, 'pasta')}
+                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 w-full justify-center"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                      Ajouter au panier
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

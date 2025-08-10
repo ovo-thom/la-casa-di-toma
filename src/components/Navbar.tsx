@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
+import CartDropdown from "./CartDropdown";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const { getTotalItems } = useCart();
 
   return (
     <nav className="w-full border-b rounded-lg border-b-sauge bg-[#f3e9dc] shadow-lg select-none">
@@ -21,23 +25,45 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="hidden sm:flex bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 md:px-6 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 items-center gap-2 border-2 border-sauge hover:border-[#6b9a82] text-sm md:text-base">
-              <svg
-                className="w-4 h-4 md:w-5 md:h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="relative">
+              <button
+                onMouseEnter={() => setIsCartVisible(true)}
+                onMouseLeave={() => setIsCartVisible(false)}
+                className="hidden sm:flex bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 md:px-6 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 items-center gap-2 border-2 border-sauge hover:border-[#6b9a82] text-sm md:text-base relative"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5.4M7 13v6a2 2 0 002 2h7.5M17 21v-2a2 2 0 00-2-2H7"
+                <svg
+                  className="w-4 h-4 md:w-5 md:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5.4M7 13v6a2 2 0 002 2h7.5M17 21v-2a2 2 0 00-2-2H7"
+                  />
+                </svg>
+                <span className="hidden md:inline">Mes commandes</span>
+                <span className="md:hidden">Panier</span>
+
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </button>
+
+              <div
+                onMouseEnter={() => setIsCartVisible(true)}
+                onMouseLeave={() => setIsCartVisible(false)}
+              >
+                <CartDropdown
+                  isVisible={isCartVisible}
+                  onClose={() => setIsCartVisible(false)}
                 />
-              </svg>
-              <span className="hidden md:inline">Mes commandes</span>
-              <span className="md:hidden">Panier</span>
-            </button>
+              </div>
+            </div>
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,6 +148,7 @@ export default function Navbar() {
             </ul>
           </div>
         )}
+
         <div className="hidden md:flex justify-center pb-2">
           <div className="flex items-center gap-2">
             <div className="w-8 lg:w-12 h-px bg-sauge"></div>
