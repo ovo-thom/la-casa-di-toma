@@ -7,6 +7,7 @@ export default function PizzaPastaSection() {
   const { addItem } = useCart();
   return (
     <motion.section
+      id="pizza-pasta-section"
       className="min-h-screen w-full py-16 px-4 bg-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
