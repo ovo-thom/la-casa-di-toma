@@ -19,7 +19,7 @@ export const pizzas: MenuItem[] = [
     img: "/assets/images/pizzas/basilic.jpg",
   },
   {
-    name: "4 Saisons",
+    name: "Quatre Saisons",
     desc: "Tomate, mozzarella, champignon, artichaud, anchois",
     price: 10,
     img: "/assets/images/pizzas/quatresaisons.jpg",
@@ -43,7 +43,7 @@ export const pizzas: MenuItem[] = [
     img: "/assets/images/pizzas/saumon.jpg",
   },
   {
-    name: "4 Fromages",
+    name: "Quatre Fromages",
     desc: "Tomate, mozzarella, fromage",
     price: 15,
     img: "/assets/images/pizzas/quatrefromage.jpg",
