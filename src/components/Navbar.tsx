@@ -5,10 +5,36 @@ import CartDropdown from "./CartDropdown";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<number | null>(null);
   const { getTotalItems } = useCart();
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setIsMenuOpen(false);
+  };
+
+  const handleCartMouseEnter = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+    setIsCartVisible(true);
+  };
+
+  const handleCartMouseLeave = () => {
+    const id = setTimeout(() => {
+      setIsCartVisible(false);
+    }, 300);
+    setTimeoutId(id);
+  };
+
   return (
-    <nav className="w-full border-b rounded-lg border-b-sauge bg-[#f3e9dc] shadow-lg select-none">
+    <nav className="relative w-full border-b rounded-lg border-b-sauge bg-[#f3e9dc] shadow-lg select-none">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-2 md:gap-4">
@@ -25,12 +51,12 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="relative">
-              <button
-                onMouseEnter={() => setIsCartVisible(true)}
-                onMouseLeave={() => setIsCartVisible(false)}
-                className="hidden sm:flex bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 md:px-6 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 items-center gap-2 border-2 border-sauge hover:border-[#6b9a82] text-sm md:text-base relative"
-              >
+            <div
+              className="relative -m-2 p-2"
+              onMouseEnter={handleCartMouseEnter}
+              onMouseLeave={handleCartMouseLeave}
+            >
+              <button className="hidden sm:flex bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 md:px-6 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 items-center gap-2 border-2 border-sauge hover:border-[#6b9a82] text-sm md:text-base relative">
                 <svg
                   className="w-4 h-4 md:w-5 md:h-5"
                   fill="none"
@@ -54,13 +80,16 @@ export default function Navbar() {
                 )}
               </button>
 
-              <div
-                onMouseEnter={() => setIsCartVisible(true)}
-                onMouseLeave={() => setIsCartVisible(false)}
-              >
+              <div className="hidden md:block absolute top-full -right-2 pt-2">
                 <CartDropdown
                   isVisible={isCartVisible}
-                  onClose={() => setIsCartVisible(false)}
+                  onClose={() => {
+                    if (timeoutId) {
+                      clearTimeout(timeoutId);
+                      setTimeoutId(null);
+                    }
+                    setIsCartVisible(false);
+                  }}
                 />
               </div>
             </div>
@@ -97,16 +126,28 @@ export default function Navbar() {
 
         <div className="hidden md:flex justify-center pb-4">
           <ul className="flex flex-row gap-6 lg:gap-8">
-            <li className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1">
+            <li
+              onClick={() => scrollToSection("accueil")}
+              className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1"
+            >
               Accueil
             </li>
-            <li className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1">
+            <li
+              onClick={() => scrollToSection("about")}
+              className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1"
+            >
+              À propos
+            </li>
+            <li
+              onClick={() => scrollToSection("menu")}
+              className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1"
+            >
               Menu
             </li>
-            <li className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1">
-              Réservations
-            </li>
-            <li className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1">
+            <li
+              onClick={() => scrollToSection("contact")}
+              className="text-[#2d2d2d] text-base lg:text-lg font-medium hover:text-[#9a3737] transition-colors duration-200 cursor-pointer border-b-2 border-transparent hover:border-sauge px-2 py-1"
+            >
               Contact
             </li>
           </ul>
@@ -115,20 +156,38 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden bg-white rounded-lg border-2 border-sauge shadow-lg mx-2 mb-4">
             <ul className="flex flex-col">
-              <li className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0">
+              <li
+                onClick={() => scrollToSection("accueil")}
+                className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0"
+              >
                 Accueil
               </li>
-              <li className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0">
+              <li
+                onClick={() => scrollToSection("about")}
+                className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0"
+              >
+                À propos
+              </li>
+              <li
+                onClick={() => scrollToSection("menu")}
+                className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0"
+              >
                 Menu
               </li>
-              <li className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0">
-                Réservations
-              </li>
-              <li className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0">
+              <li
+                onClick={() => scrollToSection("contact")}
+                className="text-[#2d2d2d] text-lg font-medium hover:text-[#9a3737] hover:bg-[#f3e9dc] transition-all duration-200 cursor-pointer px-6 py-3 border-b border-sauge/20 last:border-b-0"
+              >
                 Contact
               </li>
               <li className="px-6 py-3">
-                <button className="w-full bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg flex items-center justify-center gap-2">
+                <button
+                  onClick={() => {
+                    setIsCartVisible(!isCartVisible);
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full font-semibold transition-all duration-200 shadow-lg flex items-center justify-center gap-2 relative"
+                >
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -143,9 +202,22 @@ export default function Navbar() {
                     />
                   </svg>
                   Mes commandes
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                      {getTotalItems()}
+                    </span>
+                  )}
                 </button>
               </li>
             </ul>
+          </div>
+        )}
+        {isCartVisible && (
+          <div className="md:hidden absolute left-1 right-1 top-full mt-2 z-50">
+            <CartDropdown
+              isVisible={isCartVisible}
+              onClose={() => setIsCartVisible(false)}
+            />
           </div>
         )}
 

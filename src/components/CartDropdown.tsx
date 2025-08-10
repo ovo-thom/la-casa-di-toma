@@ -15,7 +15,7 @@ export default function CartDropdown({
   if (!isVisible) return null;
 
   return (
-    <div className="absolute top-full right-0 mt-2 w-80 bg-white border-2 border-sauge rounded-xl shadow-2xl z-50">
+    <div className="absolute top-full right-0 mt-2 w-full sm:w-80 sm:right-0 bg-white border-2 border-sauge rounded-xl shadow-2xl z-50">
       <div className="flex justify-between items-center p-4 border-b border-sauge/20">
         <h3 className="text-lg font-semibold text-[#9a3737]">Mon Panier</h3>
         <button
@@ -75,22 +75,29 @@ export default function CartDropdown({
                 <h4 className="font-medium text-sm text-gray-900">
                   {item.name}
                 </h4>
-                <p className="text-xs text-[#9a3737] font-semibold">
-                  {item.price} €
-                </p>
+                <div className="flex items-center gap-2">
+                  <p className="text-xs text-[#9a3737] font-semibold">
+                    {item.price} €
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    × {item.quantity}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <button
                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                  className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm"
+                  className="w-7 h-7 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm font-semibold transition-colors"
                 >
-                  -
+                  −
                 </button>
-                <span className="w-8 text-center text-sm">{item.quantity}</span>
+                <span className="w-8 text-center text-sm font-semibold bg-gray-50 rounded px-2 py-1">
+                  {item.quantity}
+                </span>
                 <button
                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  className="w-6 h-6 rounded-full bg-[#9a3737] hover:bg-[#7d2d2d] text-white flex items-center justify-center text-sm"
+                  className="w-7 h-7 rounded-full bg-[#9a3737] hover:bg-[#7d2d2d] text-white flex items-center justify-center text-sm font-semibold transition-colors"
                 >
                   +
                 </button>
