@@ -5,6 +5,8 @@ import AboutSection from "./components/AboutSection";
 import PizzaPastaSection from "./components/PizzaPastaSection";
 import FeaturedDish from "./components/FeaturedDish";
 import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <PizzaPastaSection />
         <FeaturedDish />
         <ContactSection />
+        <Footer />
       </div>
     </>
   );
