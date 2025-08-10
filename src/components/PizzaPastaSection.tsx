@@ -1,11 +1,18 @@
 import { pizzas, pastas } from "../lib/menuDatas";
 import type { MenuItem } from "../lib/menuDatas";
 import { useCart } from "../context/CartContext";
+import { motion } from "framer-motion";
 
 export default function PizzaPastaSection() {
   const { addItem } = useCart();
   return (
-    <section className="min-h-screen w-full py-16 px-4 bg-white">
+    <motion.section
+      className="min-h-screen w-full py-16 px-4 bg-white"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <h2 className="text-4xl md:text-5xl font-italianno text-[#9a3737] mb-2 drop-shadow-sm text-center">
           Nos Pizzas & Pâtes Artisanales
@@ -41,11 +48,15 @@ export default function PizzaPastaSection() {
                     <p className="text-[#9a3737] text-lg font-bold">
                       {pizza.price} €
                     </p>
-                    <button
+                    <motion.button
                       onClick={() => addItem(pizza, "pizza")}
-                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 w-full justify-center"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 w-full justify-center"
                     >
-                      <svg
+                      <motion.svg
+                        whileHover={{ rotate: 90 }}
+                        transition={{ duration: 0.2 }}
                         className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
@@ -57,9 +68,9 @@ export default function PizzaPastaSection() {
                           strokeWidth={2}
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
-                      </svg>
+                      </motion.svg>
                       Ajouter au panier
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               ))}
@@ -91,11 +102,15 @@ export default function PizzaPastaSection() {
                     <p className="text-[#9a3737] text-lg font-bold">
                       {pasta.price} €
                     </p>
-                    <button
+                    <motion.button
                       onClick={() => addItem(pasta, "pasta")}
-                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 w-full justify-center"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 w-full justify-center"
                     >
-                      <svg
+                      <motion.svg
+                        whileHover={{ rotate: 90 }}
+                        transition={{ duration: 0.2 }}
                         className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
@@ -107,9 +122,9 @@ export default function PizzaPastaSection() {
                           strokeWidth={2}
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
-                      </svg>
+                      </motion.svg>
                       Ajouter au panier
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               ))}
@@ -117,6 +132,6 @@ export default function PizzaPastaSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

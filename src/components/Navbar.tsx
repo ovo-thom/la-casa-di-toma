@@ -42,10 +42,10 @@ export default function Navbar() {
               <img
                 src="/assets/logo-pasta.jpg"
                 alt="Logo La Casa Di Toma"
-                className="w-12 h-12 md:w-16 md:h-16 rounded-full"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-full"
               />
             </div>
-            <h1 className="font-italianno text-2xl md:text-4xl text-[#9a3737] drop-shadow-lg transform -rotate-1 tracking-wide">
+            <h1 className="font-italianno text-3xl md:text-5xl text-[#9a3737] drop-shadow-lg transform -rotate-1 tracking-wide">
               La Casa Di Toma
             </h1>
           </div>

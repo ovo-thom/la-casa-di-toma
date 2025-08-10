@@ -1,6 +1,14 @@
+import { motion } from "framer-motion";
+
 export default function FeaturedDish() {
   return (
-    <section className="w-full flex justify-center py-12 bg-[#fff7f0]">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9 }}
+      viewport={{ once: true }}
+      className="w-full flex justify-center py-12 bg-[#fff7f0]"
+    >
       <div className="max-w-3xl mx-5 w-full flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl shadow-2xl p-8 border-4 border-sauge relative">
         <span className="absolute top-4 left-4 bg-[#9a3737] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider z-10">
           Recommandé
@@ -25,6 +33,6 @@ export default function FeaturedDish() {
           <span className="text-xl font-bold text-[#9a3737]">14 €</span>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   const [position, setPosition] = useState<{ lat: number; lng: number } | null>(
@@ -45,11 +46,29 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full py-16 bg-[#f3e9dc] flex flex-col items-center">
-      <h2 className="text-5xl font-italianno text-[#9a3737] mb-8">
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="w-full py-16 bg-[#f3e9dc] flex flex-col items-center"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="text-5xl font-italianno text-[#9a3737] mb-8"
+      >
         Contactez-nous
-      </h2>
-      <div className="w-full max-w-4xl flex flex-col md:flex-row gap-8 items-stretch">
+      </motion.h2>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="w-full max-w-4xl flex flex-col md:flex-row gap-8 items-stretch"
+      >
         <form
           onSubmit={handleSubmit}
           className="bg-white rounded-xl shadow-md p-8 flex-1 flex flex-col gap-4"
@@ -75,12 +94,14 @@ export default function ContactSection() {
             className="border border-sauge rounded text-gray-900 resize-none px-4 py-2 focus:outline-none focus:border-[#9a3737]"
             rows={4}
           />
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
             className="bg-[#9a3737] text-white font-bold py-2 px-6 rounded hover:bg-[#7a2c2c] transition"
           >
             Envoyer
-          </button>
+          </motion.button>
           <p
             className={`${
               formSuccess === true
@@ -117,7 +138,7 @@ export default function ContactSection() {
             )}
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
