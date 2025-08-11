@@ -1,53 +1,106 @@
-# React + TypeScript + Vite
+# La Casa Di Toma
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Site web pour restaurant italien** - Application React avec système de panier et animations
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-3178C6?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.16-06B6D4?style=flat-square&logo=tailwindcss)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## À propos
 
-## Expanding the ESLint configuration
+J'ai développé ce site pour un restaurant italien fictif afin de mettre en pratique mes compétences en React et TypeScript. L'objectif était de créer une expérience utilisateur fluide avec un système de commande fonctionnel.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Fonctionnalités réalisées
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Système de panier**
+- Ajout/suppression d'articles
+- Gestion des quantités
+- Calcul automatique du total
+- Dropdown accessible depuis la navigation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+**Interface utilisateur**
+- Design responsive (mobile/desktop)
+- Animations scroll avec Framer Motion
+- Navigation fluide entre sections
+- Formulaire de contact avec géolocalisation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Aspects techniques**
+- Context API pour la gestion d'état globale
+- Composants TypeScript typés
+- Architecture modulaire
+- Optimisations de performance
+
+## Stack technique
+
+- **React 18** avec hooks modernes
+- **TypeScript** pour la sécurité des types
+- **Vite** comme bundler et serveur de développement
+- **Tailwind CSS** pour le styling
+- **Framer Motion** pour les animations
+- **Context API** pour l'état global
+
+## Structure du projet
+
+```
+src/
+├── components/
+│   ├── Hero.tsx              # Section d'accueil avec vidéo
+│   ├── PizzaPastaSection.tsx # Menu avec boutons d'ajout
+│   ├── CartDropdown.tsx      # Interface du panier
+│   ├── Navbar.tsx            # Navigation principale
+│   └── ...
+├── context/
+│   └── CartContext.tsx       # Gestion globale du panier
+└── lib/
+    └── menuDatas.ts          # Données des menus
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Défis techniques surmontés
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Gestion du panier**
+- Implémentation d'un Context robuste
+- Synchronisation des états entre composants
+- Gestion des cas limites (quantités, suppression)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
+**Responsive design**
+- Adaptation du dropdown panier sur mobile
+- Navigation hamburger fonctionnelle
+- Optimisation des animations pour tous les écrans
+
+**Performance**
+- Lazy loading des animations
+- Optimisation des re-renders
+- Gestion efficace du state
+
+## Installation
+
+```bash
+git clone https://github.com/ovo-thom/la-casa-di-toma.git
+cd la-casa-di-toma
+npm install
+npm run dev
+```
+
+## Ce que j'ai appris
+
+Ce projet m'a permis d'approfondir mes connaissances en :
+- Architecture d'applications React modernes
+- Gestion d'état avec Context API
+- Intégration d'animations performantes
+- Développement mobile-first
+- TypeScript en contexte réel
+
+## Améliorations futures
+
+- Intégration d'une API de paiement
+- Système de comptes utilisateurs
+- Base de données pour les menus
+- Tests unitaires et d'intégration
+- Déploiement en production
+
+---
+
+**Développé par Thomas** | [GitHub](https://github.com/ovo-thom)
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
