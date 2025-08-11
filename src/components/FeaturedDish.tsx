@@ -16,7 +16,7 @@ export default function FeaturedDish() {
         <img
           src="/assets/images/pizzas/chef.jpg"
           alt="Pizza du Chef"
-          className="w-48 h-48 object-cover rounded-xl shadow-lg border-2 border-[#f3e9dc]"
+          className="w-48 h-48 object-cover rounded-xl shadow-lg border-2 border-[#e8d6c0]"
         />
         <div className="flex-1 flex flex-col items-start">
           <h3 className="text-3xl font-italianno text-[#9a3737] mb-2">

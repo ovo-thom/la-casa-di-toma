@@ -24,7 +24,7 @@ export default function PizzaPastaSection() {
           l’Italie !
         </p>
         <div className="w-full flex flex-col md:flex-row gap-8">
-          <div className="flex-1 bg-[#f3e9dc] rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div className="flex-1 bg-[#e8d6c0] rounded-xl shadow-md p-6 flex flex-col items-center">
             <h3 className="text-2xl font-semibold text-[#9a3737] mb-4 font-italianno">
               Pizzas
             </h3>
@@ -78,7 +78,7 @@ export default function PizzaPastaSection() {
             </div>
           </div>
 
-          <div className="flex-1 bg-[#f3e9dc] rounded-xl shadow-md p-6 flex flex-col items-center">
+          <div className="flex-1 bg-[#e8d6c0] rounded-xl shadow-md p-6 flex flex-col items-center">
             <h3 className="text-2xl font-semibold text-[#9a3737] mb-4 font-italianno">
               Pâtes
             </h3>

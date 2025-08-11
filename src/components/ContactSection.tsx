@@ -51,7 +51,7 @@ export default function ContactSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full py-16 bg-[#f3e9dc] flex flex-col items-center"
+      className="w-full py-16 bg-[#e8d6c0] flex flex-col items-center"
     >
       <motion.h2
         initial={{ opacity: 0, y: -20 }}

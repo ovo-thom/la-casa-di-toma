@@ -1,23 +1,23 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full bg-[#f3e9dc] py-16 px-4"
+      className="w-full bg-[#e8d6c0] py-16 px-4"
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
           className="flex-1 text-left"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -26,7 +26,7 @@ export default function AboutSection() {
           >
             Bienvenue à La Casa Di Toma
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -39,7 +39,7 @@ export default function AboutSection() {
             Pizzas au feu de bois, pâtes fraîches, antipasti et douceurs maison
             : chaque plat est une invitation au voyage.
           </motion.p>
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
@@ -49,7 +49,7 @@ export default function AboutSection() {
             "La dolce vita, c'est ici."
           </motion.span>
         </motion.div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}

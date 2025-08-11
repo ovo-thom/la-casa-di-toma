@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="relative w-full border-b rounded-lg border-b-sauge bg-[#f3e9dc] shadow-lg select-none">
+    <nav className="relative w-full border-b rounded-lg border-b-sauge bg-[#e8d6c0] shadow-lg select-none">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center gap-2 md:gap-4">
