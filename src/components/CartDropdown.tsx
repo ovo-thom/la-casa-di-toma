@@ -127,7 +127,7 @@ export default function CartDropdown({
       </div>
 
       {items.length > 0 && (
-        <div className="p-4 border-t border-sauge/20 bg-gray-50">
+        <div className="p-4 border-t rounded-xl border-sauge/20 bg-gray-50">
           <div className="flex justify-between items-center mb-3">
             <span className="font-semibold text-gray-900">Total:</span>
             <span className="font-bold text-lg text-[#9a3737]">
