@@ -1,0 +1,28 @@
+{
+  "theme_color": "#9a3737",
+  "background_color": "#e8d6c0",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon512_maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon512_rounded.png",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "any",
+  "display": "standalone",
+  "dir": "ltr",
+  "lang": "fr-FR",
+  "name": "La Casa di Toma",
+  "short_name": "casatoma",
+  "start_url": "/",
+  "scope": "/",
+  "description": "Découvrez l'authenticité de l'Italie dans un cadre chaleureux et raffiné.",
+  "id": "https://la-casa-di-toma.vercel.app/"
+}
