@@ -1,3 +1,5 @@
+import NotificationButton from "./NotificationButton";
+
 export default function Footer() {
   return (
     <footer className="w-full bg-[#9a3737] text-white py-8">
@@ -58,6 +60,7 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+          <NotificationButton />
         </div>
       </div>
     </footer>
