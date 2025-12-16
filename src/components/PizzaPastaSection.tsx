@@ -2,9 +2,20 @@ import { pizzas, pastas } from "../lib/menuDatas";
 import type { MenuItem } from "../lib/menuDatas";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
+import { toast } from "react-hot-toast";
 
 export default function PizzaPastaSection() {
   const { addItem } = useCart();
+
+  const handleAdd = (item: MenuItem, type: "pizza" | "pasta") => {
+    addItem(item, type);
+    toast.success(
+      `${type === "pizza" ? "Pizza" : "Pâtes"} ajoutée${
+        type === "pizza" ? "" : "s"
+      } au panier !`
+    );
+  };
+
   return (
     <motion.section
       id="pizza-pasta-section"
@@ -50,7 +61,7 @@ export default function PizzaPastaSection() {
                       {pizza.price} €
                     </p>
                     <motion.button
-                      onClick={() => addItem(pizza, "pizza")}
+                      onClick={() => handleAdd(pizza, "pizza")}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 w-full justify-center"
@@ -104,7 +115,7 @@ export default function PizzaPastaSection() {
                       {pasta.price} €
                     </p>
                     <motion.button
-                      onClick={() => addItem(pasta, "pasta")}
+                      onClick={() => handleAdd(pasta, "pasta")}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="bg-[#9a3737] hover:bg-[#7d2d2d] text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 w-full justify-center"
