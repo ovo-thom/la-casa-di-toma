@@ -67,7 +67,7 @@ export default function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
         viewport={{ once: true }}
-        className="w-full max-w-4xl flex flex-col md:flex-row gap-8 items-stretch"
+        className="w-full max-w-4xl flex flex-col md:flex-row gap-8 items-stretch px-6"
       >
         <form
           onSubmit={handleSubmit}
@@ -114,7 +114,7 @@ export default function ContactSection() {
             {formSend}
           </p>
         </form>
-        <div className="flex-1 flex flex-col items-center justify-center">
+        <div className="flex-1 flex flex-col items-center justify-center px-4">
           {error && <p className="text-red-600 mb-2">{error}</p>}
           <div className="w-full h-64 rounded-xl overflow-hidden bg-gray-200 flex items-center justify-center">
             {position ? (
